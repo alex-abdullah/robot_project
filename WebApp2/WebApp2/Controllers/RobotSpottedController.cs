@@ -27,9 +27,12 @@ public class RobotSpottedController : ControllerBase // Map request to a respons
     {
 
         _logger.Log(LogLevel.Information, new EventId(), null, "Location name sent: " + location.Name, null);
-       var x = await _service.GetNearestWaterLocation(location);
+        var x = await _service.GetNearestWaterLocation(location);
+        string[] mainLocation = new string[] { "" };
+        mainLocation = x.display_name.Split(",");
+                
 
-       return x.display_name;
+       return mainLocation[0];
     }
 }
 
